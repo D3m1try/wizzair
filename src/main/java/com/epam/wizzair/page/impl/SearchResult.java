@@ -1,11 +1,9 @@
 package com.epam.wizzair.page.impl;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 
-public class SearchResult extends AbstractPage {
+public class SearchResult {
 
     @FindBy(xpath = "//*[@id=\"fare-selector-outbound\"]/div/table/tbody[5]/tr/td[2]/label/div/div/span")
     private WebElement firstFlight;
@@ -17,10 +15,7 @@ public class SearchResult extends AbstractPage {
     private WebElement sum;
 
     
-    public SearchResult(WebDriver driver){
-        super(driver);
-        PageFactory.initElements(this.driver, this);
-    }
+
 
     public String chooseFlights() {
     	
@@ -33,10 +28,7 @@ public class SearchResult extends AbstractPage {
     	return sum.getText();
     }
 
-	@Override
-	public void openPage() {
-		
-	}
+
 	
 	
     
