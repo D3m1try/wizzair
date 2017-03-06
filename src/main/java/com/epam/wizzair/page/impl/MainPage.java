@@ -48,6 +48,7 @@ public class MainPage  {
         }
 
         private void typeDestination(String destination) {
+
             inputDestinationName.click();
             inputDestinationName.sendKeys(destination);
             inputDestinationName.sendKeys(Keys.RETURN);
