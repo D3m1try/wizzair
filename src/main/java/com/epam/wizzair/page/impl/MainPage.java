@@ -60,7 +60,7 @@ public class MainPage  {
 
         public void createNewRoute(String origin, String destination)  {
 
-            typeOrigin(origin);
+            //typeOrigin(origin);
 
             ExpectedConditions.visibilityOf(inputDestinationName);
             typeDestination(destination);
