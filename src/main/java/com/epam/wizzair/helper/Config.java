@@ -3,9 +3,7 @@ package com.epam.wizzair.helper;
 import java.io.InputStream;
 import java.util.Properties;
 
-/**
- * Created by Aliaksandr_Krutsko on 3/6/2017.
- */
+
 public class Config {
 
     private static Properties config = new Properties();
@@ -33,9 +31,7 @@ public class Config {
 
     }
 
-    public static String timeOut() {
-        return config.getProperty("timeOut");
-    }
+
     public static String geckodriver() {return config.getProperty("geckodriver");}
     public static String chromedriver() {return config.getProperty("chromedriver");}
 

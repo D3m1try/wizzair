@@ -6,11 +6,7 @@ import com.epam.wizzair.page.impl.SearchResult;
 
 public class Steps {
 
-//    private WebDriver driver;
-//
-//    public void initBrowser() {
-//        driver = DriverSingleton.getDriver();
-//    }
+
 
 
     public void findFlight() {
