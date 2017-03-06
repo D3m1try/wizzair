@@ -12,6 +12,7 @@ public class Steps {
     private WebDriver driver;
 
     public void initBrowser() {
+        DriverSingleton.setDriver(DriverSingleton.Driver.Chrome);
         driver = DriverSingleton.getDriver();
     }
 
