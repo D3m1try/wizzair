@@ -24,10 +24,10 @@ public class MainPage  {
     @FindBy(xpath = "//*[@id=\"search-return-date\"]")
     private WebElement returnDateName;
     
-    @FindBy(xpath = "//div[@class=\"calendar\"]/div/div/table/tbody/tr[2]/td[3]")
+    @FindBy(css = "[data-pika-day=\"8\"")
     private WebElement calendarDepartureDate;
     
-    @FindBy(xpath = "//div[@class=\"calendar\"]/div/div/table/tbody/tr[3]/td[3]")
+    @FindBy(css = "[ data-pika-day=\"15\"")
     private WebElement calendarReturnDate;
 
     @FindBy(xpath = "//*[@id=\"flight-search\"]/div/div/div/form/div[2]/button")
