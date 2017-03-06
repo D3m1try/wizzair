@@ -7,9 +7,7 @@ import org.testng.annotations.BeforeTest;
 
 import static com.epam.wizzair.driver.DriverSingleton.*;
 
-/**
- * Created by Aliaksandr_Krutsko on 3/6/2017.
- */
+
 public class TestBase {
 
     protected static final  String BASE_URL = Config.url();
