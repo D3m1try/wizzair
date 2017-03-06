@@ -15,7 +15,7 @@ public class TestBase {
     @BeforeTest
     public void setup(){
 
-        setDriver(Driver.Firefox);
+        setDriver(Driver.Chrome);
         open(BASE_URL);
 
     }
