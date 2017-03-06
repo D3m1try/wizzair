@@ -11,7 +11,7 @@ public class Steps {
 
     public void findFlight() {
         MainPage mainPage = new MainPage();
-        mainPage.createNewRoute("Sofia", "Copenhagen");
+        mainPage.createNewRoute("Riga", "Tel-Aviv");
     }
     
     public String getFirstPrice() {
