@@ -20,8 +20,7 @@ public class Steps {
     }
 
     public void findFlight() {
-        MainPage mainPage = new MainPage(driver);
-        mainPage.openPage();
+        MainPage mainPage = new MainPage();
         mainPage.createNewRoute("Riga", "Tel-Aviv", "13 Apr 2017", "13 Apr 2017");
     }
     

@@ -1,14 +1,12 @@
 package com.epam.wizzair.page.impl;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 
-public class MainPage extends AbstractPage{
+public class MainPage  {
 
-    private final String BASE_URL = "https://wizzair.com/en-gb/main-page#/";
+    //private final String BASE_URL = "https://wizzair.com/en-gb/main-page#/";
 
     @FindBy(id= "search-departure-station")
     private WebElement inputOriginName;
@@ -34,20 +32,14 @@ public class MainPage extends AbstractPage{
     @FindBy(xpath = "//*[@id=\"app\"]/header/div/nav/ul/li[3]/button")
     private WebElement loginButton;
 
-    public MainPage(WebDriver driver){
-        super(driver);
-        PageFactory.initElements(this.driver, this);
-    }
 
-    @Override
-    public void openPage(){
-
-        driver.navigate().to(BASE_URL);
-    }
 
     public void createNewRoute(String origin, String destination, String departureDate, String returnDate){
  
-    	    	
+
+        inputOriginName.click();
+        inputOriginName.sendKeys(origin);
+        inputOriginName.click();
         inputDestinationName.click();
         inputDestinationName.sendKeys(destination);
         departureDateName.click();
