@@ -1,16 +1,14 @@
 package com.epam.wizzair.page.impl;
 
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import static com.epam.wizzair.driver.DriverSingleton.getDriver;
 
 
-public class MainPage  {
+public class MainPage extends AbstractPage{
 
+    private final String BASE_URL = "https://wizzair.com/en-gb/main-page#/";
 
     @FindBy(id= "search-departure-station")
     private WebElement inputOriginName;
@@ -24,10 +22,10 @@ public class MainPage  {
     @FindBy(xpath = "//*[@id=\"search-return-date\"]")
     private WebElement returnDateName;
     
-    @FindBy(css = "[data-pika-day=\"8\"")
+    @FindBy(xpath = "//div[@class=\"calendar\"]/div/div/table/tbody/tr[2]/td[3]")
     private WebElement calendarDepartureDate;
     
-    @FindBy(css = "[ data-pika-day=\"15\"")
+    @FindBy(xpath = "//div[@class=\"calendar\"]/div/div/table/tbody/tr[3]/td[3]")
     private WebElement calendarReturnDate;
 
     @FindBy(xpath = "//*[@id=\"flight-search\"]/div/div/div/form/div[2]/button")
@@ -36,39 +34,27 @@ public class MainPage  {
     @FindBy(xpath = "//*[@id=\"app\"]/header/div/nav/ul/li[3]/button")
     private WebElement loginButton;
 
-        public MainPage(){
+    public MainPage(WebDriver driver){
+        super(driver);
+        PageFactory.initElements(this.driver, this);
+    }
 
-                PageFactory.initElements(getDriver(), this);
-        }
+    @Override
+    public void openPage(){
 
+        driver.navigate().to(BASE_URL);
+    }
 
-
-        private void typeOrigin(String origin) {
-            inputOriginName.sendKeys(origin);
-            inputOriginName.sendKeys(Keys.RETURN);
-        }
-
-        private void typeDestination(String destination) {
-
-            //inputDestinationName.click();
-            inputDestinationName.sendKeys(destination);
-            inputDestinationName.sendKeys(Keys.RETURN);
-        }
-
-
-
-
-        public void createNewRoute(String origin, String destination)  {
-
-            //typeOrigin(origin);
-
-            ExpectedConditions.visibilityOf(inputDestinationName);
-            typeDestination(destination);
-            departureDateName.click();
-            calendarDepartureDate.click();
-            returnDateName.click();
-            calendarReturnDate.click();
-            searchButton.click();
+    public void createNewRoute(String origin, String destination, String departureDate, String returnDate){
+ 
+    	    	
+        inputDestinationName.click();
+        inputDestinationName.sendKeys(destination);
+        departureDateName.click();
+        calendarDepartureDate.click();
+        returnDateName.click();
+        calendarReturnDate.click();
+        searchButton.click();
 
     }
 
@@ -78,6 +64,7 @@ public class MainPage  {
         loginButton.click();
     }
   
+    
 
 
 }
