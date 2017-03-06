@@ -22,7 +22,7 @@ public class Tests {
 
         WizzairSteps steps = new Steps();
         steps.login(name, pass);
-        steps.pickRoute("Vilnus","Budapesht");
+       // steps.pickRoute("Vilnus","Budapesht");
         steps.pickDesiredDepartureDate(new Date(3894753));
         steps.pickDesiredReturnDate(new Date(34534535));
         steps.pickPassengers(1,0,0);
