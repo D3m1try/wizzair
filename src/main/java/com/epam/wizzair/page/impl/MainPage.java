@@ -4,6 +4,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static com.epam.wizzair.driver.DriverSingleton.getDriver;
 
@@ -49,7 +50,7 @@ public class MainPage  {
 
         private void typeDestination(String destination) {
 
-            inputDestinationName.click();
+            //inputDestinationName.click();
             inputDestinationName.sendKeys(destination);
             inputDestinationName.sendKeys(Keys.RETURN);
         }
@@ -60,6 +61,8 @@ public class MainPage  {
         public void createNewRoute(String origin, String destination)  {
 
             typeOrigin(origin);
+
+            ExpectedConditions.visibilityOf(inputDestinationName);
             typeDestination(destination);
             departureDateName.click();
             calendarDepartureDate.click();
