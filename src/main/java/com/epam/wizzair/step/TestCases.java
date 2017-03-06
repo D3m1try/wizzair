@@ -23,9 +23,9 @@ public class TestCases {
         steps.findFlight();
         Assert.assertEquals(steps.getFirstPrice(), steps.getSum());
     }
-    
+
     @AfterMethod
     public void close() {
-    	steps.closeBrowser();
+        steps.closeBrowser();
     }
 }

@@ -21,10 +21,10 @@ public class MainPage extends AbstractPage{
 
     @FindBy(xpath = "//*[@id=\"search-return-date\"]")
     private WebElement returnDateName;
-    
+
     @FindBy(xpath = "//div[@class=\"calendar\"]/div/div/table/tbody/tr[2]/td[3]")
     private WebElement calendarDepartureDate;
-    
+
     @FindBy(xpath = "//div[@class=\"calendar\"]/div/div/table/tbody/tr[3]/td[3]")
     private WebElement calendarReturnDate;
 
@@ -46,8 +46,8 @@ public class MainPage extends AbstractPage{
     }
 
     public void createNewRoute(String origin, String destination, String departureDate, String returnDate){
- 
-    	    	
+
+
         inputDestinationName.click();
         inputDestinationName.sendKeys(destination);
         departureDateName.click();
@@ -63,8 +63,8 @@ public class MainPage extends AbstractPage{
     public void signIn(){
         loginButton.click();
     }
-  
-    
+
+
 
 
 }

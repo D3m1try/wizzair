@@ -24,17 +24,17 @@ public class Steps {
         mainPage.openPage();
         mainPage.createNewRoute("Riga", "Tel-Aviv", "13 Apr 2017", "13 Apr 2017");
     }
-    
+
     public String getFirstPrice() {
-    	SearchResult searchResult = new SearchResult(driver);
-    	return searchResult.chooseFlights();
+        SearchResult searchResult = new SearchResult(driver);
+        return searchResult.chooseFlights();
     }
-    
+
     public String getSum() {
-    	SearchResult searchResult = new SearchResult(driver);
-    	return searchResult.getSum();
+        SearchResult searchResult = new SearchResult(driver);
+        return searchResult.getSum();
     }
-    
-    
+
+
 
 }
