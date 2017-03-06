@@ -1,12 +1,9 @@
 package com.epam.wizzair.step;
 
 import com.epam.wizzair.driver.TestBase;
-import org.testng.annotations.AfterMethod;
+import junit.framework.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-
-import junit.framework.Assert;
 
 
 public class TestCases extends TestBase {
@@ -25,8 +22,8 @@ public class TestCases extends TestBase {
         Assert.assertEquals(steps.getFirstPrice(), steps.getSum());
     }
     
-    @AfterMethod
+/*    @AfterMethod
     public void close() {
     	steps.closeBrowser();
-    }
+    }*/
 }
