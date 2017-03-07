@@ -5,18 +5,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MainPage extends AbstractPage{
 
-    private final String BASE_URL = "https://wizzair.com/#/";
+    private WebDriverWait wait = new WebDriverWait(driver, 5, 1000);
+    private final String BASE_URL = "https://wizzair.com/en-gb/main-page#/";
 
     private String pathDate = "//div[@class=\"calendar\"]//td[@data-day=\"";
 
     @FindBy(id= "search-departure-station")
     private WebElement inputOriginName;
 
-    @FindBy(id = "search-arrival-station")
+    @FindBy(xpath = "//input[@id = \"search-arrival-station\"]")
     private WebElement inputDestinationName;
 
     @FindBy(xpath = "//*[@id=\"search-departure-date\"]")
@@ -49,8 +51,9 @@ public class MainPage extends AbstractPage{
         return this;
     }
 
-    public MainPage fillDistination(String destination){
+    public MainPage fillDestination(String destination){
 
+        wait.until(ExpectedConditions.elementToBeClickable(inputDestinationName));
         inputDestinationName.click();
         inputDestinationName.sendKeys(destination);
         return this;

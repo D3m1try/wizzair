@@ -25,20 +25,23 @@ public class MainPageSteps {
     public void findFlight() {
         MainPage mainPage = new MainPage(driver);
         mainPage.openPage();
-        mainPage.fillDistination(destination);
+        mainPage.fillDestination(destination);
         mainPage.fillDepartureDate(departureDay);
         mainPage.fillReturnDate(returnDay);
         mainPage.search();
     }
 
-    public String getFirstPrice() {
+    public String getPrice() {
         SearchResult searchResult = new SearchResult(driver);
-        return searchResult.chooseFlights();
+        String firstFlightPrice = searchResult.chooseFirstFlight().substring(1);
+        String secondFlightPrice = searchResult.chooseSecondFlight().substring(1);
+        double sum = Double.parseDouble(firstFlightPrice) + Double.parseDouble(secondFlightPrice);
+        return sum + "";
     }
 
     public String getSum() {
         SearchResult searchResult = new SearchResult(driver);
-        return searchResult.getSum();
+        return searchResult.getSum().substring(1);
     }
 
 

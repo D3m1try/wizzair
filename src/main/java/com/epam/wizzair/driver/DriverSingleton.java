@@ -20,12 +20,12 @@ public class DriverSingleton {
 
     public static WebDriver getDriver() {
         if (null == driver) {
-            ProfilesIni profile = new ProfilesIni();
-            FirefoxProfile myprofile = profile.getProfile("WebDriver");
-            System.setProperty("webdriver.firefox.profile", "WebDriver");
-//            driver = new FirefoxDriver(new FirefoxProfile(new File("C:\\Users\\Dzmitry_Sankouski\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\jhosve22.WebDriver")));
-//            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-//            driver.manage().window().maximize();
+            //ProfilesIni profile = new ProfilesIni();
+            //FirefoxProfile myprofile = profile.getProfile("WebDriver");
+            //System.setProperty("webdriver.firefox.profile", "WebDriver");
+            //driver = new FirefoxDriver(new FirefoxProfile());
+            //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            //driver.manage().window().maximize();
 
             System.setProperty(WEBDRIVER_CHROME_DRIVER, WEBDRIVER_CHROME_DRIVER_EXE_PATH);
             driver = new ChromeDriver();

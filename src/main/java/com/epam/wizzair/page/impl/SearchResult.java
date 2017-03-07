@@ -3,9 +3,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class SearchResult extends AbstractPage {
+
+    private WebDriverWait wait = new WebDriverWait(driver, 5, 1000);
 
     @FindBy(xpath = "//*[@id=\"fare-selector-outbound\"]/div/table/tbody[5]/tr/td[2]/label/div/div/span")
     private WebElement firstFlight;
@@ -22,11 +26,22 @@ public class SearchResult extends AbstractPage {
         PageFactory.initElements(this.driver, this);
     }
 
-    public String chooseFlights() {
+    public String chooseFirstFlight() {
     	
-    	String firstPrice = firstFlight.getText();
-    	firstFlight.click();    	
-    	return firstPrice;
+    	String firstFlightPrice = firstFlight.getText();
+    	firstFlight.click();
+    	return firstFlightPrice;
+    }
+    public String chooseSecondFlight() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //wait.until(ExpectedConditions.elementToBeClickable(secondFlight));
+        String secondFlightPrice = secondFlight.getText();
+        secondFlight.click();
+        return secondFlightPrice;
     }
     
     public String getSum() {

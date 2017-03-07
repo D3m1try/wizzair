@@ -22,7 +22,7 @@ public class TestCases {
     @Test
     public void flitsSum() {
         steps.findFlight();
-        Assert.assertEquals(steps.getFirstPrice(), steps.getSum());
+        Assert.assertEquals(steps.getPrice(), steps.getSum());
     }
 
     @AfterMethod
