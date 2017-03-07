@@ -1,8 +1,9 @@
-package com.epam.wizzair.step;
+package com.epam.wizzair.test;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import com.epam.wizzair.step.impl.MainPageSteps;
 
 
 import junit.framework.Assert;
@@ -10,11 +11,11 @@ import junit.framework.Assert;
 
 public class TestCases {
 
-    private Steps steps;
+    private MainPageSteps steps;
 
     @BeforeMethod(description = "Init browser")
     public void setUp() {
-        steps = new Steps();
+        steps = new MainPageSteps();
         steps.initBrowser();
     }
 
@@ -23,9 +24,9 @@ public class TestCases {
         steps.findFlight();
         Assert.assertEquals(steps.getFirstPrice(), steps.getSum());
     }
-    
+
     @AfterMethod
     public void close() {
-    	steps.closeBrowser();
+        steps.closeBrowser();
     }
 }
