@@ -3,41 +3,56 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class SearchResult extends AbstractPage {
 
-    @FindBy(xpath = "//*[@id=\"fare-selector-outbound\"]/div/table/tbody[5]/tr/td[2]/label/div/div/span")
-    private WebElement firstFlight;
-    
-    @FindBy(xpath = "//*[@id=\"fare-selector-return\"]/div/table/tbody[5]/tr/td[3]/label/div/div")
-    private WebElement secondFlight;
-    
-    @FindBy(xpath = "//*[@id=\"booking-flow\"]/aside/div[2]/div[5]/div/div[2]/span")
-    private WebElement sum;
+    private WebDriverWait wait = new WebDriverWait(driver, 10, 5000);
 
-    
+    @FindBy(xpath = "//*[@id='fare-selector-outbound']//div[@class = 'fare__price']")
+    private WebElement firstFlight;
+
+    @FindBy(xpath = "//*[@id='fare-selector-return']//div[@class = 'fare__price']")
+    private WebElement secondFlight;
+
+    @FindBy(xpath = "//div[@class='booking-flow__itinerary__total__price']")
+    private WebElement totalPrice;
+
+
     public SearchResult(WebDriver driver){
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
 
-    public String chooseFlights() {
-    	
-    	String firstPrice = firstFlight.getText();
-    	firstFlight.click();    	
-    	return firstPrice;
+    public String chooseFirstFlight() {
+
+        String firstFlightPrice = firstFlight.getText();
+        firstFlight.click();
+        return firstFlightPrice;
     }
-    
-    public String getSum() {
-    	return sum.getText();
+    public String chooseSecondFlight() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String secondFlightPrice = secondFlight.getText();
+        //wait.until(ExpectedConditions.elementToBeClickable(secondFlight));
+        secondFlight.click();
+        return secondFlightPrice;
     }
 
-	@Override
-	public void openPage() {
-		
-	}
-	
-	
-    
+    public String getTotalPrice() {
+        return totalPrice.getText();
+    }
+
+    @Override
+    public void openPage() {
+
+    }
+
+
+
 }
