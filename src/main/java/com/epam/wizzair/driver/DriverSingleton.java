@@ -47,10 +47,6 @@ public class DriverSingleton {
         return driver;
     }
 
-
-
-
-
     public static void open(String url){
         getDriver().get(url);
     }
