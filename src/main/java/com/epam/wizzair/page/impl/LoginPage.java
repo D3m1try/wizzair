@@ -1,5 +1,7 @@
 package com.epam.wizzair.page.impl;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import com.epam.wizzair.page.impl.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage extends AbstractPage {
 
     private final String BASE_URL = "https://wizzair.com/";
+    private final Logger logger = LogManager.getRootLogger();
 
     @FindBy(xpath = "//ul[@class='navigation__container']/li[3]")
     private WebElement signInButton;
@@ -38,9 +41,14 @@ public class LoginPage extends AbstractPage {
     }
 
     public void login(String email, String password){
-        signInButton.click();
         emailField.sendKeys(email);
         passwordField.sendKeys(password);
         submitSingInButton.click();
+        logger.info("Login performed");
     }
+
+    public void openSignInForm(){
+        signInButton.click();
+    }
+
 }

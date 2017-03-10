@@ -5,11 +5,11 @@ import com.epam.wizzair.page.exception.ElementNotActiveException;
 import com.epam.wizzair.page.util.BaggageCabinOptions;
 import com.epam.wizzair.page.util.BaggageCheckedOptions;
 import com.epam.wizzair.page.util.CheckInMethod;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.naming.OperationNotSupportedException;
 
@@ -17,6 +17,9 @@ import javax.naming.OperationNotSupportedException;
  * Created by Dzmitry_Sankouski on 06-Mar-17.
  */
 public class Passenger extends AbstractPage implements IPassenger {
+
+    private WebDriverWait wait;
+
 
     //locators
     @FindBy(xpath = "//*[@id=\"passenger-baggages-outbound-0\"]")
@@ -27,12 +30,6 @@ public class Passenger extends AbstractPage implements IPassenger {
 
     @FindBy(xpath = "//*[@id=\"booking-flow-step-passengers\"]/div[1]/form")
     WebElement passengerForm;
-
-//    @FindBy(xpath = "//*[@id=\"passenger-baggages-outbound-0\"]/div[2]/div[1]/div/div/div[1]")
-//    WebElement depBaggageCheckInContainer;
-
-
-
 
 
     //--------------------sport equipment buttons
@@ -46,38 +43,55 @@ public class Passenger extends AbstractPage implements IPassenger {
     By baggageLightRB = By.xpath("//*[@id=\"passenger-0-outbound-checked-in-baggage-switch-option1\"]");
     By baggageHeavyRB = By.xpath("//*[@id=\"passenger-0-outbound-checked-in-baggage-switch-option2\"]");
 
+    Actions actions = new Actions(driver);
+
     public Passenger(WebDriver driver) {
         super(driver);
         PageFactory.initElements(this.driver, this);
+        JavascriptExecutor jsx = (JavascriptExecutor)driver;
+        jsx.executeScript("window.scrollBy(0,450)", "");
+        wait = new WebDriverWait(this.driver, 5, 1000);
     }
 
     public Passenger setCheckedInBaggage(BaggageCheckedOptions depOption) {
+        WebElement input;
+
         switch (depOption){
             case NONE:
-                depContainer.findElement(baggageNoneRB).click();
+                input = depContainer.findElement(baggageNoneRB);
+                actions.moveToElement(input).click();
                 break;
             case LIGHT:
-                depContainer.findElement(baggageLightRB).click();
+                input = depContainer.findElement(baggageLightRB);
+                actions.moveToElement(input).click();
                 break;
             case HEAVY:
-                depContainer.findElement(baggageHeavyRB).click();
+                input = depContainer.findElement(baggageHeavyRB);
+                actions.moveToElement(input).click();
+                break;
         }
+
 
         return this;
     }
 
     public Passenger setCheckedInBaggage(BaggageCheckedOptions depOption, BaggageCheckedOptions retOption) {
+        WebElement input;
         setCheckedInBaggage(depOption); // setting departure options
 
         switch (depOption){
             case NONE:
-                retContainer.findElement(baggageNoneRB).click();
+                input = retContainer.findElement(baggageNoneRB);
+                actions.moveToElement(input).click();
                 break;
             case LIGHT:
-                retContainer.findElement(baggageLightRB).click();
+                input = retContainer.findElement(baggageLightRB);
+                actions.moveToElement(input).click();
                 break;
             case HEAVY:
-                retContainer.findElement(baggageHeavyRB).click();
+                input = retContainer.findElement(baggageHeavyRB);
+                actions.moveToElement(input).click();
+                break;
         }
         return this;
     }
@@ -151,20 +165,20 @@ public class Passenger extends AbstractPage implements IPassenger {
         boolean actualDepState = isDepSportEquipmentEn();
 
         if (isDepEnabled^actualDepState){ // if actual XOR expected = true then click
-            sportEquipmentDepBtn.findElement(input).click();
+            sportEquipmentDepBtn.click();
         }
 
         boolean actualRetState = isRetSportEquipmentEn();
         if (isRetSportEquipmentEn()^actualRetState){ // if actual XOR expected = true then click
-            sportEquipmentRetBtn.findElement(input).click();
+            sportEquipmentRetBtn.click();
         }
         return this;
     }
 
 
 
-    By online = By.xpath("//div[3]/div[1]/div[2]/div/div/div/label[1]");
-    By airport = By.xpath("//div[3]/div[1]/div[2]/div/div/div/label[2]");
+    By online = By.xpath(".//div[3]/div[1]/div[2]/div/div/div/label[1]");
+    By airport = By.xpath(".//div[3]/div[1]/div[2]/div/div/div/label[2]");
     public Passenger setCheckInMethod(CheckInMethod depMethod, CheckInMethod retMethod) {
 
         switch (retMethod){
@@ -201,7 +215,21 @@ public class Passenger extends AbstractPage implements IPassenger {
         retContainer.findElement(seatSelection).click();
     }
 
-    public void confirm() throws ElementNotActiveException{
+    // confirm container locator is relative to passengers form
+    By confirmContainerLocator = By.xpath(".//*[@class=\"booking-flow__cta-container\"]");
+    By confirmBtnLocator = By.xpath(".//*[@id=\"passengers-continue-btn\"]");
+    By confirmLabelLocator = By.xpath(".//div[2]");
+
+    public void submit() throws ElementNotActiveException{
+        WebElement confirmContainer = passengerForm.findElement(confirmContainerLocator);
+        WebElement confirmBtn = confirmContainer.findElement(confirmBtnLocator);
+
+        if (!confirmBtn.isEnabled()){
+            WebElement confirmLabel = confirmContainer.findElement(confirmLabelLocator);
+            throw new ElementNotActiveException(confirmLabel.getText());
+        }
+        //todo return next page
+        confirmBtn.click();
 
     }
 

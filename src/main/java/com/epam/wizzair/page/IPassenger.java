@@ -42,6 +42,6 @@ public interface IPassenger {
 
     public void gotoRetSeatSelection();
 
-    public void confirm() throws ElementNotActiveException;
+    public void submit() throws ElementNotActiveException;
 
 }

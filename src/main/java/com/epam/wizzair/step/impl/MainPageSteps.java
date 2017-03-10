@@ -18,9 +18,10 @@ public class MainPageSteps {
         driver.quit();
     }
 
-    public void findFlight(String destination, int departureDay, int returnDay) {
+    public void findFlight(String origin, String destination, int departureDay, int returnDay) {
         MainPage mainPage = new MainPage(driver);
         mainPage.openPage();
+        mainPage.fillOrigin(origin);
         mainPage.fillDestination(destination);
         mainPage.fillDepartureDate(departureDay);
         mainPage.fillReturnDate(returnDay);
