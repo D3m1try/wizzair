@@ -37,7 +37,7 @@ public class SelectSeatPage extends AbstractPage {
     private WebElement[] allSeats;*/
 
     //all available seats in the plane
-    @FindBy(xpath = "div[@id='booking-flow-step-seat-selection']//input[not(@disabled)]")
+    @FindBy(xpath = "//div[@id='booking-flow-step-seat-selection']//input[not(@disabled)]")
     private WebElement[] availableSeats;
 
     /*//all unavailable seats in the plane
