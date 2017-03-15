@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 /**
  * Created by Ivan_Surus on 3/15/2017.
  */
-public class tstCheckBaggage {
+public class tstCheckBaggage extends TestBase{
 
     StepsForMainPage mainSteps = new StepsForMainPage();
 
@@ -35,8 +35,4 @@ public class tstCheckBaggage {
 //        Assert.assertEquals(result.getTwoFlightPrices(), result.getFlightSumFromLeftWindow());
     }//todo complete Info column Page, & finish asserts
 
-    @AfterClass
-    public void closeResources(){
-        DriverSingleton.quit();
-    }
 }

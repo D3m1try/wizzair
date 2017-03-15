@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 /**
  * Created by Ivan_Surus on 3/15/2017.
  */
-public class tstSelectedSeatIsNoMoreAvailable {
+public class tstSelectedSeatIsNoMoreAvailable extends TestBase{
 
     StepsForMainPage mainSteps = new StepsForMainPage();
 
@@ -30,8 +30,5 @@ public class tstSelectedSeatIsNoMoreAvailable {
                 .selectSeatWizzAir().continueFromSeats();
     }
 
-    @AfterClass
-    public void closeResources(){
-        DriverSingleton.quit();
-    }
+
 }

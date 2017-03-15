@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 /**
  * Created by Ivan_Surus on 3/15/2017.
  */
-public class tstCheckSumDirectAndReturnFlightPrices {
+public class tstCheckSumDirectAndReturnFlightPrices extends TestBase{
 
     StepsForMainPage mainSteps = new StepsForMainPage();
     //----------TestCase id=2
@@ -28,8 +28,4 @@ public class tstCheckSumDirectAndReturnFlightPrices {
         Assert.assertEquals(result.getTwoFlightPrices(), result.getFlightSumFromLeftWindow());
     }
 
-    @AfterClass
-    public void closeResources(){
-        DriverSingleton.quit();
-    }
 }

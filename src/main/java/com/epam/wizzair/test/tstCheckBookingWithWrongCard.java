@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 /**
  * Created by Ivan_Surus on 3/15/2017.
  */
-public class tstCheckBookingWithWrongCard {
+public class tstCheckBookingWithWrongCard extends TestBase{
 
     StepsForMainPage mainSteps = new StepsForMainPage();
 
@@ -46,8 +46,4 @@ public class tstCheckBookingWithWrongCard {
 //        Assert.assertEquals(result.getTwoFlightPrices(), result.getFlightSumFromLeftWindow());
     }
 
-    @AfterClass
-    public void closeResources(){
-        DriverSingleton.quit();
-    }
 }

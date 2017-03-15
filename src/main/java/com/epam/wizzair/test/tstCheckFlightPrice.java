@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 /**
  * Created by Ivan_Surus on 3/15/2017.
  */
-public class tstCheckFlightPrice {
+public class tstCheckFlightPrice extends TestBase{
     //----------TestCase id=1
 
     StepsForMainPage mainSteps = new StepsForMainPage();
@@ -30,8 +30,4 @@ public class tstCheckFlightPrice {
         Assert.assertEquals(result.getFirstFlightPrice(), result.getFirstFlightPriceInSearch());
     }
 
-    @AfterClass
-    public void closeResources(){
-        DriverSingleton.quit();
-    }
 }
