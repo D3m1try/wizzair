@@ -19,6 +19,10 @@ public class InfoColumnPage {
 
     }
 
+    public static InfoColumnPage getInstance() {
+        return instance;
+    }
+
     @FindBy(xpath = "//*[@id=\"booking-flow\"]/aside/div[2]")
     private WebElement infoContainer;
 
@@ -52,6 +56,26 @@ public class InfoColumnPage {
     private WebElement returnTicketMonth;
 
 
+    public String getTotalPrice(){
+        return totalPrice.getText().split("€")[1];
+    }
+
+    public String getDirectTicketDay(){
+        return directTicketDay.getText();
+    }
+
+    public String getDirectTicketMonth(){
+        return directTicketMonth.getText();
+    }
+
+    public String getReturnTicketDay(){
+        return returnTicketDay.getText();
+    }
+
+    public String getReturnTicketMonth(){
+        return returnTicketMonth.getText();
+    }
+    //------------end of Flight section
     /*By titleLoc = By.xpath("/div[@class=\"booking-flow__itinerary__step__title\"]");
     By contentLoc = By.xpath("/div[contains(@class, 'booking-flow__itinerary__step__content')]");*/
 
@@ -62,6 +86,28 @@ public class InfoColumnPage {
 
     @FindBy(xpath = "//div[contains(@class,'passenger-names__content')]")
     private WebElement[] allPassengers;
+
+    @FindBy(xpath = "//*[@id=\"booking-flow\"]/aside/div[2]/div[2]/div[2]/div[1]/div[2]/ul/li")
+    private WebElement[] depPassengerRawData;
+
+    public String[][] getDepPassengerRawData(){
+        String[][] result = new String[2][depPassengerRawData.length];
+
+        for (int i = 0; i < depPassengerRawData.length; i++) {
+            result[0][i] = depPassengerRawData[i].findElement(By.xpath("/span[1]")).getText();
+            result[1][i] = depPassengerRawData[i].findElement(By.xpath("/span[2]")).getText();
+        }
+
+        return result;
+    }
+
+//    public String getcabinBaggage(){
+//
+//    }
+//
+//    public String getCheckedBaggage(){
+//
+//    }
 
 
     //services section
@@ -101,25 +147,6 @@ public class InfoColumnPage {
         return passengerNames;
     }
 
-    public String getTotalPrice(){
-        return totalPrice.getText().split("€")[1];
-    }
-
-    public String getDirectTicketDay(){
-        return directTicketDay.getText();
-    }
-
-    public String getDirectTicketMonth(){
-        return directTicketMonth.getText();
-    }
-
-    public String getReturnTicketDay(){
-        return returnTicketDay.getText();
-    }
-
-    public String getReturnTicketMonth(){
-        return returnTicketMonth.getText();
-    }
 
 
 
