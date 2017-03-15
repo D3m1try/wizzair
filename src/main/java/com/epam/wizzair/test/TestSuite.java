@@ -1,3 +1,4 @@
+/*
 package com.epam.wizzair.test;
 
 import com.epam.wizzair.bean.*;
@@ -10,10 +11,13 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
+*/
 /**
  * Created by Dzmitry_Sankouski on 13-Mar-17.
- */
+ *//*
+
 public class TestSuite {
+
     StepsForMainPage mainSteps = new StepsForMainPage();
 
     //----------TestCase id=1
@@ -114,3 +118,4 @@ public class TestSuite {
     }
 
 }
+*/

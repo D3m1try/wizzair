@@ -1,0 +1,35 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="WizzAirTestSuite">
+
+    <test name="CheckBaggage" >
+        <classes>
+            <class name="com.epam.wizzair.test.tstCheckBaggage" />
+        </classes>
+    </test>
+
+    <test name="CheckBookingWithWrongCard">
+        <classes>
+            <class name="com.epam.wizzair.test.tstCheckBookingWithWrongCard"/>
+        </classes>
+    </test>
+
+    <test name="CheckFlightPrice">
+        <classes>
+            <class name="com.epam.wizzair.test.tstCheckFlightPrice"/>
+        </classes>
+    </test>
+
+    <test name="CheckSumDirectAndReturnFlightPrices">
+        <classes>
+            <class name="com.epam.wizzair.test.tstCheckSumDirectAndReturnFlightPrices"/>
+        </classes>
+    </test>
+
+    <test name="SelectedSeatIsNoMoreAvailable">
+        <classes>
+            <class name="com.epam.wizzair.test.tstSelectedSeatIsNoMoreAvailable"/>
+        </classes>
+    </test>
+
+</suite>
