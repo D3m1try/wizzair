@@ -13,11 +13,11 @@ import org.testng.annotations.Test;
  * Created by Ivan_Surus on 3/15/2017.
  */
 public class tstCheckFlightPrice extends TestBase{
-    //----------TestCase id=1
+
 
     StepsForMainPage mainSteps = new StepsForMainPage();
 
-    @Test
+    @Test(description = "id=1")
     public void searchViaTimetable(){
         Creator.setPropertyFile("timetable");
         FlightData flightData = Creator.getFlightData();

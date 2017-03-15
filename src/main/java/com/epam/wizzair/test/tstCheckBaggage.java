@@ -16,8 +16,7 @@ public class tstCheckBaggage extends TestBase{
 
     StepsForMainPage mainSteps = new StepsForMainPage();
 
-    //----------TestCase id=4
-    @Test
+    @Test(description = "id=4")
     public void baggageCheck(){
         FlightData flightData = Creator.getFlightData();
 

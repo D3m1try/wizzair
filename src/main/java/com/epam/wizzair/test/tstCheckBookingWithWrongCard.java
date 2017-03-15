@@ -18,8 +18,8 @@ public class tstCheckBookingWithWrongCard extends TestBase{
 
     StepsForMainPage mainSteps = new StepsForMainPage();
 
-    //----------TestCase id=5
-    @Test
+
+    @Test(description = "id=5")
     public void bookingWrongCard(){
         FlightData flightData = Creator.getFlightData();
         PassengerData passengerData = Creator.getPassengerData();

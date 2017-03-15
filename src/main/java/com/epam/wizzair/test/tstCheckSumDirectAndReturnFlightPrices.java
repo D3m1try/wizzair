@@ -15,8 +15,8 @@ import org.testng.annotations.Test;
 public class tstCheckSumDirectAndReturnFlightPrices extends TestBase{
 
     StepsForMainPage mainSteps = new StepsForMainPage();
-    //----------TestCase id=2
-    @Test
+
+    @Test(description = "id=2")
     public void summingTwoFlights(){
         Creator.setPropertyFile("bean");
         FlightData flightData = Creator.getFlightData();

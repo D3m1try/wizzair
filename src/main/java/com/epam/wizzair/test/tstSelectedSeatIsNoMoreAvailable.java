@@ -15,8 +15,7 @@ public class tstSelectedSeatIsNoMoreAvailable extends TestBase{
 
     StepsForMainPage mainSteps = new StepsForMainPage();
 
-    //----------TestCase id=6
-    @Test
+    @Test(description = "id=6")
     public void seatReserving(){
         FlightData flightData = Creator.getFlightData();
         PassengerData passengerData = Creator.getPassengerData();
@@ -29,6 +28,5 @@ public class tstSelectedSeatIsNoMoreAvailable extends TestBase{
                 .gotoDepSeatSelection()
                 .selectSeatWizzAir().continueFromSeats();
     }
-
 
 }
